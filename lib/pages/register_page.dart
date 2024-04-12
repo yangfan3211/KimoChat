@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:kimo_chat/components/my_button.dart';
 import 'package:kimo_chat/components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
-  // email and pw text controllers
+class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwController = TextEditingController();
-// tap to go to register page
+  final TextEditingController _confirmPwController = TextEditingController();
   final Function() onTap;
-  LoginPage({super.key, required this.onTap});
-
-  //login method
-  void login() {}
+  RegisterPage({super.key, required this.onTap});
+  void register() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,10 +51,18 @@ class LoginPage extends StatelessWidget {
 
           const SizedBox(height: 25),
 
+          // pw textfield
+          MyTextField(
+            hintText: "Confirm Password",
+            obscureText: true,
+            controller: _confirmPwController,
+          ),
+          const SizedBox(height: 25),
+
           // login button
           MyButton(
-            text: 'Login',
-            onTap: login,
+            text: 'Register',
+            onTap: register,
           ),
 
           const SizedBox(height: 25),
@@ -67,13 +72,13 @@ class LoginPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Not  a member?",
+              Text("Already have a account?",
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.primary,
                   )),
               GestureDetector(
                 onTap: onTap,
-                child: Text("Register now",
+                child: Text("Login now",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
