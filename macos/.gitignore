@@ -5,3 +5,4 @@
 # Xcode-related
 **/dgph
 **/xcuserdata/
+/macos/Runner/GoogleService-Info.plist

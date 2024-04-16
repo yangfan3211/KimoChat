@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kimo_chat/auth/auth_service.dart';
 import 'package:kimo_chat/components/my_button.dart';
 import 'package:kimo_chat/components/my_textfield.dart';
 
@@ -8,7 +9,31 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _confirmPwController = TextEditingController();
   final Function() onTap;
   RegisterPage({super.key, required this.onTap});
-  void register() {}
+  void register(BuildContext context) {
+    //get auth service
+    final authService = AuthService();
+    if (_pwController.text == _confirmPwController.text) {
+      try {
+        authService.signUpWithEmailAndPassword(
+          _emailController.text,
+          _pwController.text,
+        );
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: Text(e.toString()),
+                ));
+      }
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+                title: Text("Passwords do not match"),
+              ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +87,7 @@ class RegisterPage extends StatelessWidget {
           // login button
           MyButton(
             text: 'Register',
-            onTap: register,
+            onTap: () => register(context),
           ),
 
           const SizedBox(height: 25),
