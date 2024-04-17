@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kimo_chat/auth/auth_service.dart';
+import 'package:kimo_chat/services/auth/auth_service.dart';
 import 'package:kimo_chat/pages/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -53,7 +53,7 @@ class MyDrawer extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SettingsPage(),
+                      builder: (context) => const SettingsPage(),
                     ),
                   );
                 },

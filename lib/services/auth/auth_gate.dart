@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kimo_chat/auth/login_or_register.dart';
+import 'package:kimo_chat/services/auth/login_or_register.dart';
 import 'package:kimo_chat/pages/home_page.dart';
 
 class AuthGate extends StatelessWidget {
@@ -14,7 +14,7 @@ class AuthGate extends StatelessWidget {
         builder: (context, snapshot) {
           // user is logged in
           if (snapshot.hasData) {
-            return const HomPage();
+            return HomPage();
           }
           // user is not logged in
           return const LoginOrRegister();

@@ -1,7 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:kimo_chat/auth/auth_service.dart';
+import 'package:kimo_chat/services/auth/auth_service.dart';
 import 'package:kimo_chat/components/my_button.dart';
 import 'package:kimo_chat/components/my_textfield.dart';
 
