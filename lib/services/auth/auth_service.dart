@@ -6,6 +6,11 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // get current user
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
+
   // sign in
   Future<UserCredential> signInWithEmailAndPassword(
       String email, String password) async {
@@ -15,6 +20,7 @@ class AuthService {
           email: email, password: password);
 
       // save user info in a separate doc if it doesn't exist
+      // _firestore.settings = const Settings(persistenceEnabled: false);
       await _firestore.collection('Users').doc(userCredential.user!.uid).set({
         'email': email,
         'uid': userCredential.user!.uid,
